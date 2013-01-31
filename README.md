@@ -27,10 +27,10 @@ $ sass --watch scss:css --style compressed
 
 @import "spacing.scss" in your global *.scss file OR just put the following code within your global *.scss file.
 <pre>
-@import "global";
+@import "spacing";
 </pre>
 
-MY PHILOSOPHY
+MY PHILOSOPHY: 
 Responsive Web Design (RWD) should use fixed sizes not percent for margin & padding. 
 Ask yourself this, would a designer ever design a margin or padding to be 4.567px? Probably not... so you shouldn't output code that does that either.
 I have OCD when it comes to margin and padding for design and UI development. Consistent spacing is design 101, pixels matter.

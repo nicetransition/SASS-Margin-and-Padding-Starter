@@ -1,0 +1,225 @@
+/*
+	Created by Kevin Mack
+	January 31, 2013
+	kmack@resource.com | http://fb.com/kevinmack
+	https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter
+	
+	PURPOSE
+		Used to generate margin and padding for your project. Ideal for object-oriented CSS.
+	REQUIRES
+		Sass 3.2.x
+	SETUP
+		cd {~path to directory~}/assets
+		sass --watch scss:css --style compressed
+	MORE
+		@import "spacing.scss" in your global *.scss file OR just put the following code within your global *.scss file.
+
+		MY PHILOSOPHY
+			Responsive Web Design (RWD) should use fixed sizes not percent for margin & padding. 
+			Ask yourself this, would a designer ever design a margin or padding to be 4.567px? Probably not... so you shouldn't output code that does that either.
+			I have OCD when it comes to margin and padding for design and UI development. Consistent spacing is design 101, pixels matter.
+			#OOCSSrulez #ilovemondrian
+*/
+
+	//Global Space Variables
+		$default-space: 40px;
+		$default-space-half: $default-space/2;
+		$default-smaller: $default-space/2;
+		$default-space-2x: $default-space*2;
+		$default-space-smallest: 5px;
+
+		$default-space-smaller: $default-space-half;
+
+	//Global Padding & Margin
+		.padding {
+			padding-bottom: $default-space;
+			padding-left: $default-space;
+			padding-right: $default-space;
+			padding-top: $default-space;
+		}		
+		.padding-half {
+			padding-bottom: $default-space/2;
+			padding-left: $default-space/2;
+			padding-right: $default-space/2;
+			padding-top: $default-space/2;
+		}
+		.padding-2x {
+			padding-bottom: $default-space*2;
+			padding-left: $default-space*2;
+			padding-right: $default-space*2;
+			padding-top: $default-space*2;
+		}
+		.padding-sides {
+			padding-left: $default-space;
+			padding-right: $default-space;
+		}	
+		.padding-smallest {
+			padding-bottom: $default-space-smallest;
+			padding-left: $default-space-smallest;
+			padding-right: $default-space-smallest;
+			padding-top: $default-space-smallest;
+		}		
+		.padding-verticals {
+			padding-bottom: $default-space;
+			padding-top: $default-space;
+		}
+		.margin {
+			margin-bottom: $default-space;
+			margin-left: $default-space;
+			margin-right: $default-space;
+			margin-top: $default-space;
+		}
+		.margin-half {
+			margin-bottom: $default-space/2;
+			margin-left: $default-space/2;
+			margin-right: $default-space/2;
+			margin-top: $default-space/2;
+		}
+		.margin-2x {
+			margin-bottom: $default-space*2;
+			margin-left: $default-space*2;
+			margin-right: $default-space*2;
+			margin-top: $default-space*2;
+		}
+		.margin-sides {
+			margin-left: $default-space;
+			margin-right: $default-space;
+		}	
+		.margin-smallest {
+			margin-bottom: $default-space-smallest;
+			margin-left: $default-space-smallest;
+			margin-right: $default-space-smallest;
+			margin-top: $default-space-smallest;
+		}	
+		.margin-verticals {
+			margin-bottom: $default-space;
+			margin-top: $default-space;
+		}
+	/*
+		@mixin space-property($property, $space: $default-space, $include-smallest: true, $space-smallest: $default-space-smallest)
+			Mixin to generate each property
+
+		ARGUMENTS
+			$property: The property and class that will be generated.
+				String of for CSS property of "margin", "padding", "margin-*", "padding-*". Default: NO DEFAULT, REQUIRES A VALUE
+				Examples: "padding", "padding-bottom", "margin-right"
+			$space: The spacing for the property.
+				String of excepted values for margin/padding CSS properties. Default: default-space
+			$include-smallest: Include ".*-smallest" in mixin output. Not necessarily required in media query because $default-space-smallest should not change. 
+				Boolean. Default: true
+			$space-smallest: Smallest measurement space in the design
+				String of excepted values for margin/padding CSS properties. Default: $default-space-smallest
+			$custom-class-name: Override the default class name. By default it outputs the $property for both the class name and CSS property to be defined.
+				String. Default: false.
+				Example: @include space-property("margin-bottom",90px,false,$custom-class-name:"margin-bottom-alt");
+	*/
+	@mixin space-property($property, $space:$default-space, $include-smallest:true, $custom-class-name:false, $space-smallest:$default-space-smallest) {		
+		$class-name: $property;
+		@if($custom-class-name!=false) {
+			$class-name: $custom-class-name;
+		}
+		.#{$class-name} {
+			#{$property}: $space/2;
+		}		
+		.#{$class-name}-half {
+			#{$property}: $space/2;
+		}		
+		.#{$class-name}-2x {
+			#{$property}: $space*2;
+		}	
+		@if($include-smallest) {
+			.#{$class-name}-smallest {
+				#{$property}: $space-smallest;
+			}			
+		}
+	}
+
+	@include space-property("margin-bottom");
+	@include space-property("margin-left");
+	@include space-property("margin-right");
+	@include space-property("margin-top");
+	@include space-property("padding-bottom");
+	@include space-property("padding-left");
+	@include space-property("padding-right");
+	@include space-property("padding-top");
+
+	@media screen and (max-width:400px) {
+		/*
+			This is an arbitrary breakpoint and is relative to your initial padding and design. 
+			I find myself switching global space at this size.
+		*/		
+		.padding {
+			padding-bottom: $default-space-smaller;
+			padding-left: $default-space-smaller;
+			padding-right: $default-space-smaller;
+			padding-top: $default-space-smaller;
+		}		
+		.padding-half {
+			padding-bottom: $default-space-smaller/2;
+			padding-left: $default-space-smaller/2;
+			padding-right: $default-space-smaller/2;
+			padding-top: $default-space-smaller/2;
+		}
+		.padding-2x {
+			padding-bottom: $default-space-smaller*2;
+			padding-left: $default-space-smaller*2;
+			padding-right: $default-space-smaller*2;
+			padding-top: $default-space-smaller*2;
+		}
+		.padding-sides {
+			padding-left: $default-space-smaller;
+			padding-right: $default-space-smaller;
+		}		
+		.padding-verticals {
+			padding-bottom: $default-space-smaller;
+			padding-top: $default-space-smaller;
+		}
+		.margin {
+			margin-bottom: $default-space-smaller;
+			margin-left: $default-space-smaller;
+			margin-right: $default-space-smaller;
+			margin-top: $default-space-smaller;
+		}
+		.margin-half {
+			margin-bottom: $default-space-smaller/2;
+			margin-left: $default-space-smaller/2;
+			margin-right: $default-space-smaller/2;
+			margin-top: $default-space-smaller/2;
+		}
+		.margin-2x {
+			margin-bottom: $default-space-smaller*2;
+			margin-left: $default-space-smaller*2;
+			margin-right: $default-space-smaller*2;
+			margin-top: $default-space-smaller*2;
+		}
+		.margin-sides {
+			margin-left: $default-space-smaller;
+			margin-right: $default-space-smaller;
+		}
+		.margin-verticals {
+			margin-bottom: $default-space-smaller;
+			margin-top: $default-space-smaller;
+		}
+		@include space-property("margin-bottom", $default-space-smaller, false);
+		@include space-property("margin-left", $default-space-smaller, false);
+		@include space-property("margin-right", $default-space-smaller, false);
+		@include space-property("margin-top", $default-space-smaller, false);
+		@include space-property("padding-bottom", $default-space-smaller, false);
+		@include space-property("padding-left", $default-space-smaller, false);
+		@include space-property("padding-right", $default-space-smaller, false);
+		@include space-property("padding-top", $default-space-smaller, false);
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+

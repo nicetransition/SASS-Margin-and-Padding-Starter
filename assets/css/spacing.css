@@ -1,0 +1,328 @@
+/*
+	Created by Kevin Mack
+	January 31, 2013
+	kmack@resource.com | http://fb.com/kevinmack
+	https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter
+	
+	PURPOSE
+		Used to generate margin and padding for your project. Ideal for object-oriented CSS.
+	REQUIRES
+		Sass 3.2.x
+	SETUP
+		cd {~path to directory~}/assets
+		sass --watch scss:css --style compressed
+	MORE
+		@import "spacing.scss" in your global *.scss file OR just put the following code within your global *.scss file.
+
+		MY PHILOSOPHY
+			Responsive Web Design (RWD) should use fixed sizes not percent for margin & padding. 
+			Ask yourself this, would a designer ever design a margin or padding to be 4.567px? Probably not... so you shouldn't output code that does that either.
+			I have OCD when it comes to margin and padding for design and UI development. Consistent spacing is design 101, pixels matter.
+			#OOCSSrulez #ilovemondrian
+*/
+.padding {
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 40px; }
+
+.padding-half {
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px; }
+
+.padding-2x {
+  padding-bottom: 80px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 80px; }
+
+.padding-sides {
+  padding-left: 40px;
+  padding-right: 40px; }
+
+.padding-smallest {
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px; }
+
+.padding-verticals {
+  padding-bottom: 40px;
+  padding-top: 40px; }
+
+.margin {
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 40px; }
+
+.margin-half {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px; }
+
+.margin-2x {
+  margin-bottom: 80px;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 80px; }
+
+.margin-sides {
+  margin-left: 40px;
+  margin-right: 40px; }
+
+.margin-smallest {
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px; }
+
+.margin-verticals {
+  margin-bottom: 40px;
+  margin-top: 40px; }
+
+	/*
+		@mixin space-property($property, $space: $default-space, $include-smallest: true, $space-smallest: $default-space-smallest)
+			Mixin to generate each property
+
+		ARGUMENTS
+			$property: The property and class that will be generated.
+				String of for CSS property of "margin", "padding", "margin-*", "padding-*". Default: NO DEFAULT, REQUIRES A VALUE
+				Examples: "padding", "padding-bottom", "margin-right"
+			$space: The spacing for the property.
+				String of excepted values for margin/padding CSS properties. Default: default-space
+			$include-smallest: Include ".*-smallest" in mixin output. Not necessarily required in media query because $default-space-smallest should not change. 
+				Boolean. Default: true
+			$space-smallest: Smallest measurement space in the design
+				String of excepted values for margin/padding CSS properties. Default: $default-space-smallest
+			$custom-class-name: Override the default class name. By default it outputs the $property for both the class name and CSS property to be defined.
+				String. Default: false.
+				Example: @include space-property("margin-bottom",90px,false,$custom-class-name:"margin-bottom-alt");
+	*/
+.margin-bottom {
+  margin-bottom: 20px; }
+
+.margin-bottom-half {
+  margin-bottom: 20px; }
+
+.margin-bottom-2x {
+  margin-bottom: 80px; }
+
+.margin-bottom-smallest {
+  margin-bottom: 5px; }
+
+.margin-left {
+  margin-left: 20px; }
+
+.margin-left-half {
+  margin-left: 20px; }
+
+.margin-left-2x {
+  margin-left: 80px; }
+
+.margin-left-smallest {
+  margin-left: 5px; }
+
+.margin-right {
+  margin-right: 20px; }
+
+.margin-right-half {
+  margin-right: 20px; }
+
+.margin-right-2x {
+  margin-right: 80px; }
+
+.margin-right-smallest {
+  margin-right: 5px; }
+
+.margin-top {
+  margin-top: 20px; }
+
+.margin-top-half {
+  margin-top: 20px; }
+
+.margin-top-2x {
+  margin-top: 80px; }
+
+.margin-top-smallest {
+  margin-top: 5px; }
+
+.padding-bottom {
+  padding-bottom: 20px; }
+
+.padding-bottom-half {
+  padding-bottom: 20px; }
+
+.padding-bottom-2x {
+  padding-bottom: 80px; }
+
+.padding-bottom-smallest {
+  padding-bottom: 5px; }
+
+.padding-left {
+  padding-left: 20px; }
+
+.padding-left-half {
+  padding-left: 20px; }
+
+.padding-left-2x {
+  padding-left: 80px; }
+
+.padding-left-smallest {
+  padding-left: 5px; }
+
+.padding-right {
+  padding-right: 20px; }
+
+.padding-right-half {
+  padding-right: 20px; }
+
+.padding-right-2x {
+  padding-right: 80px; }
+
+.padding-right-smallest {
+  padding-right: 5px; }
+
+.padding-top {
+  padding-top: 20px; }
+
+.padding-top-half {
+  padding-top: 20px; }
+
+.padding-top-2x {
+  padding-top: 80px; }
+
+.padding-top-smallest {
+  padding-top: 5px; }
+
+@media screen and (max-width: 400px) {
+  /*
+  	This is an arbitrary breakpoint and is relative to your initial padding and design. 
+  	I find myself switching global space at this size.
+  */
+  .padding {
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px; }
+
+  .padding-half {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px; }
+
+  .padding-2x {
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px; }
+
+  .padding-sides {
+    padding-left: 20px;
+    padding-right: 20px; }
+
+  .padding-verticals {
+    padding-bottom: 20px;
+    padding-top: 20px; }
+
+  .margin {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px; }
+
+  .margin-half {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px; }
+
+  .margin-2x {
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 40px; }
+
+  .margin-sides {
+    margin-left: 20px;
+    margin-right: 20px; }
+
+  .margin-verticals {
+    margin-bottom: 20px;
+    margin-top: 20px; }
+
+  .margin-bottom {
+    margin-bottom: 10px; }
+
+  .margin-bottom-half {
+    margin-bottom: 10px; }
+
+  .margin-bottom-2x {
+    margin-bottom: 40px; }
+
+  .margin-left {
+    margin-left: 10px; }
+
+  .margin-left-half {
+    margin-left: 10px; }
+
+  .margin-left-2x {
+    margin-left: 40px; }
+
+  .margin-right {
+    margin-right: 10px; }
+
+  .margin-right-half {
+    margin-right: 10px; }
+
+  .margin-right-2x {
+    margin-right: 40px; }
+
+  .margin-top {
+    margin-top: 10px; }
+
+  .margin-top-half {
+    margin-top: 10px; }
+
+  .margin-top-2x {
+    margin-top: 40px; }
+
+  .padding-bottom {
+    padding-bottom: 10px; }
+
+  .padding-bottom-half {
+    padding-bottom: 10px; }
+
+  .padding-bottom-2x {
+    padding-bottom: 40px; }
+
+  .padding-left {
+    padding-left: 10px; }
+
+  .padding-left-half {
+    padding-left: 10px; }
+
+  .padding-left-2x {
+    padding-left: 40px; }
+
+  .padding-right {
+    padding-right: 10px; }
+
+  .padding-right-half {
+    padding-right: 10px; }
+
+  .padding-right-2x {
+    padding-right: 40px; }
+
+  .padding-top {
+    padding-top: 10px; }
+
+  .padding-top-half {
+    padding-top: 10px; }
+
+  .padding-top-2x {
+    padding-top: 40px; } }

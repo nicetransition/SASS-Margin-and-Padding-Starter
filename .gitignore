@@ -1,0 +1,5 @@
+# Mac crap
+.DS_Store
+
+# Sass cache files
+*.scssc

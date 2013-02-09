@@ -62,6 +62,14 @@
 		.padding-verticals {
 			padding-bottom: $default-space;
 			padding-top: $default-space;
+		}		
+		.padding-verticals-half {
+			padding-bottom: $default-space/2;
+			padding-top: $default-space/2;
+		}		
+		.padding-verticals-2x {
+			padding-bottom: $default-space*2;
+			padding-top: $default-space*2;
 		}
 		.margin {
 			margin-bottom: $default-space;
@@ -94,6 +102,14 @@
 		.margin-verticals {
 			margin-bottom: $default-space;
 			margin-top: $default-space;
+		}		
+		.margin-verticals-half {
+			margin-bottom: $default-space/2;
+			margin-top: $default-space/2;
+		}		
+		.margin-verticals-2x {
+			margin-bottom: $default-space*2;
+			margin-top: $default-space*2;
 		}
 	/*
 		@mixin space-property($property, $space: $default-space, $include-smallest: true, $space-smallest: $default-space-smallest)
@@ -119,7 +135,7 @@
 			$class-name: $custom-class-name;
 		}
 		.#{$class-name} {
-			#{$property}: $space/2;
+			#{$property}: $space;
 		}		
 		.#{$class-name}-half {
 			#{$property}: $space/2;
@@ -173,6 +189,14 @@
 		.padding-verticals {
 			padding-bottom: $default-space-smaller;
 			padding-top: $default-space-smaller;
+		}		
+		.padding-verticals-half {
+			padding-bottom: $default-space-smaller/2;
+			padding-top: $default-space-smaller/2;
+		}		
+		.padding-verticals-2x {
+			padding-bottom: $default-space-smaller*2;
+			padding-top: $default-space-smaller*2;
 		}
 		.margin {
 			margin-bottom: $default-space-smaller;
@@ -199,6 +223,14 @@
 		.margin-verticals {
 			margin-bottom: $default-space-smaller;
 			margin-top: $default-space-smaller;
+		}		
+		.margin-verticals-half {
+			margin-bottom: $default-space-smaller/2;
+			margin-top: $default-space-smaller/2;
+		}		
+		.margin-verticals-2x {
+			margin-bottom: $default-space-smaller*2;
+			margin-top: $default-space-smaller*2;
 		}
 		@include space-property("margin-bottom", $default-space-smaller, false);
 		@include space-property("margin-left", $default-space-smaller, false);

@@ -21,6 +21,7 @@ $ sass --watch scss:css --style compressed
 ### Release History
 
 * 01.31.13 - Initial Release
+* 02.14.13 - Updates for *"-sides", this was originally missing in the Initial Release. Also updated the initial size from 40px to 20px, for the example.
 
 
 ### Ect

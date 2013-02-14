@@ -1,6 +1,7 @@
 /*
 	Created by Kevin Mack
-	January 31, 2013
+	Created On: January 31, 2013
+	Updated Last: February 14, 2013
 	kmack@resource.com | http://fb.com/kevinmack
 	https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter
 	
@@ -22,7 +23,7 @@
 */
 
 	//Global Space Variables
-		$default-space: 40px;
+		$default-space: 20px;
 		$default-space-half: $default-space/2;
 		$default-smaller: $default-space/2;
 		$default-space-2x: $default-space*2;
@@ -52,7 +53,15 @@
 		.padding-sides {
 			padding-left: $default-space;
 			padding-right: $default-space;
-		}	
+		}		
+		.padding-sides-half {
+			padding-left: $default-space/2;
+			padding-right: $default-space/2;
+		}		
+		.padding-sides-2x {
+			padding-left: $default-space*2;
+			padding-right: $default-space*2;
+		}
 		.padding-smallest {
 			padding-bottom: $default-space-smallest;
 			padding-left: $default-space-smallest;
@@ -93,6 +102,14 @@
 			margin-left: $default-space;
 			margin-right: $default-space;
 		}	
+		.margin-sides-half {
+			margin-left: $default-space/2;
+			margin-right: $default-space/2;
+		}		
+		.margin-sides-2x {
+			margin-left: $default-space*2;
+			margin-right: $default-space*2;
+		}
 		.margin-smallest {
 			margin-bottom: $default-space-smallest;
 			margin-left: $default-space-smallest;
@@ -185,7 +202,15 @@
 		.padding-sides {
 			padding-left: $default-space-smaller;
 			padding-right: $default-space-smaller;
+		}			
+		.padding-sides-half {
+			padding-left: $default-space-smaller/2;
+			padding-right: $default-space-smaller/2;
 		}		
+		.padding-sides-2x {
+			padding-left: $default-space-smaller*2;
+			padding-right: $default-space-smaller*2;
+		}	
 		.padding-verticals {
 			padding-bottom: $default-space-smaller;
 			padding-top: $default-space-smaller;
@@ -219,7 +244,15 @@
 		.margin-sides {
 			margin-left: $default-space-smaller;
 			margin-right: $default-space-smaller;
-		}
+		}			
+		.margin-sides-half {
+			margin-left: $default-space-smaller/2;
+			margin-right: $default-space-smaller/2;
+		}		
+		.margin-sides-2x {
+			margin-left: $default-space-smaller*2;
+			margin-right: $default-space-smaller*2;
+		}	
 		.margin-verticals {
 			margin-bottom: $default-space-smaller;
 			margin-top: $default-space-smaller;

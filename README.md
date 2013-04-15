@@ -22,17 +22,12 @@ $ sass --watch scss:css --style compressed
 
 * 01.31.13 - Initial Release
 * 02.14.13 - Updates for *"-sides", this was originally missing in the Initial Release. Also updated the initial size from 40px to 20px, for the example.
+* 04.15.13 - Updates to documentation and a few whitespace spots removed. Moved media query to top of the file. Introduced official versions and branches. Welcome `v1.1`
 
 
 ### Ect
 
-@import "spacing.scss" in your global *.scss file OR just put the following code within your global *.scss file.
+`@import` "spacing.scss" in your global *.scss file OR just put the following code within your global *.scss file.
 <pre>
 @import "spacing";
 </pre>
-
-MY PHILOSOPHY: 
-Responsive Web Design (RWD) should use fixed sizes not percent for margin & padding. 
-Ask yourself this, would a designer ever design a margin or padding to be 4.567px? Probably not... so you shouldn't output code that does that either.
-I have OCD when it comes to margin and padding for design and UI development. Consistent spacing is design 101, pixels matter.
-#OOCSSrulez #ilovemondrian

@@ -1,0 +1,683 @@
+@import "variables";
+
+/*!
+ * OOCSS Spacing v2.0.0
+ * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter
+ *
+ * Released under the MIT license
+ * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
+ *
+ * Date: 2013-10-30
+ */
+
+
+/* ==========================================================================
+   @mixin definitions
+   ==========================================================================
+
+ * @mixin space-property()
+   * `$property`: The property and class that will be generated.
+      String of for CSS property of "margin", "padding", "margin-*", "padding-*". Default: NO DEFAULT, REQUIRES A VALUE
+      Examples: "padding", "padding-bottom", "margin-right"
+   * `$space`: The spacing for the property.
+      String of excepted values for margin/padding CSS properties. Default: default-space
+   * `$include--smallest`: Include ".*-smallest" in mixin output. Not necessarily required in media query because $default-space--smallest should not change.
+      Boolean. Default: true
+   * `$space--smallest`: Smallest measurement space in the design
+      String of excepted values for margin/padding CSS properties. Default: $default-space--smallest
+   * `$custom-class-name`: Override the default class name. By default it outputs the $property for both the class name and CSS property to be defined.
+      String. Default: false.
+      Example: @include space-property( "margin-bottom", 90px, false, $custom-class-name: "margin-bottom-alt" );
+
+*/
+
+@mixin space-property($property, $space: $default-space, $include--smallest: true, $custom-class-name: false, $space--smallest: $default-space--smallest) {
+	$class-name: $property;
+
+	@if ($custom-class-name != false) {
+		$class-name: $custom-class-name;
+	}
+
+	.#{$class-name} {
+		#{$property}: $space;
+	}
+
+	@if ($include-half) {
+		.#{$class-name}--half {
+			#{$property}: $space / 2;
+		}
+	}
+
+	@if ($include-2x) {
+		.#{$class-name}--2x {
+			#{$property}: $space * 2;
+		}
+	}
+
+	@if ($include-smallest) {
+		.#{$class-name}--smallest {
+			#{$property}: $space--smallest;
+		}
+	}
+}
+
+
+/* ==========================================================================
+   Global Padding, Margin, and Spacing
+   ========================================================================== */
+
+%margin-top {
+	margin-top: $default-space;
+}
+
+%margin-right {
+	margin-right: $default-space;
+}
+
+%margin-bottom {
+	margin-bottom: $default-space;
+}
+
+%margin-left {
+	margin-left: $default-space;
+}
+
+%margin {
+	margin-top: $default-space;
+	margin-right: $default-space;
+	margin-bottom: $default-space;
+	margin-left: $default-space;
+}
+
+%margin--half {
+	margin-top: $default-space / 2;
+	margin-right: $default-space / 2;
+	margin-bottom: $default-space / 2;
+	margin-left: $default-space / 2;
+}
+
+%margin--2x {
+	margin-top: $default-space * 2;
+	margin-right: $default-space * 2;
+	margin-bottom: $default-space * 2;
+	margin-left: $default-space * 2;
+}
+
+%margin--sides {
+	margin-right: $default-space;
+	margin-left: $default-space;
+}
+
+%margin--sides--half {
+	margin-right: $default-space / 2;
+	margin-left: $default-space / 2;
+}
+
+%margin--sides--2x {
+	margin-right: $default-space * 2;
+	margin-left: $default-space * 2;
+}
+
+%margin--smallest {
+	margin-top: $default-space--smallest;
+	margin-right: $default-space--smallest;
+	margin-bottom: $default-space--smallest;
+	margin-left: $default-space--smallest;
+}
+
+%margin--verticals {
+	margin-top: $default-space;
+	margin-bottom: $default-space;
+}
+
+%margin--verticals--half {
+	margin-top: $default-space / 2;
+	margin-bottom: $default-space / 2;
+}
+
+%margin--verticals--2x {
+	margin-top: $default-space * 2;
+	margin-bottom: $default-space * 2;
+}
+
+%margin-top {
+	margin-top: $default-space;
+}
+
+%margin-top--half {
+	margin-top: $default-space--half;
+}
+
+%margin-top--2x {
+	margin-top: $default-space * 2;
+}
+
+%margin-top--smallest {
+	margin-top: $default-space--smallest;
+}
+
+%margin-right {
+	margin-right: $default-space;
+}
+
+%margin-right--half {
+	margin-right: $default-space / 2;
+}
+
+%margin-right--2x {
+	margin-right: $default-space * 2;
+}
+
+%margin-right--smallest {
+	margin-right: $default-space--smallest;
+}
+
+%margin-bottom {
+	margin-bottom: $default-space;
+}
+
+%margin-bottom--half {
+	margin-bottom: $default-space / 2;
+}
+
+%margin-bottom--2x {
+	margin-bottom: $default-space * 2;
+}
+
+%margin-bottom--smallest {
+	margin-bottom: $default-space--smallest;
+}
+
+%margin-left {
+	margin-left: $default-space;
+}
+
+%margin-left--half {
+	margin-left: $default-space / 2;
+}
+
+%margin-left--2x {
+	margin-left: $default-space * 2;
+}
+
+%margin-left--smallest {
+	margin-left: $default-space--smallest;
+}
+
+%padding-top {
+	padding-top: $default-space;
+}
+
+%padding-right {
+	padding-right: $default-space;
+}
+
+%padding-bottom {
+	padding-bottom: $default-space;
+}
+
+%padding-left {
+	padding-left: $default-space;
+}
+
+%padding {
+	padding-top: $default-space;
+	padding-right: $default-space;
+	padding-bottom: $default-space;
+	padding-left: $default-space;
+}
+
+%padding--half {
+	padding-top: $default-space / 2;
+	padding-right: $default-space / 2;
+	padding-bottom: $default-space / 2;
+	padding-left: $default-space / 2;
+}
+
+%padding--2x {
+	padding-top: $default-space * 2;
+	padding-right: $default-space * 2;
+	padding-bottom: $default-space * 2;
+	padding-left: $default-space * 2;
+}
+
+%padding--sides {
+	padding-right: $default-space;
+	padding-left: $default-space;
+}
+
+%padding--sides--half {
+	padding-right: $default-space / 2;
+	padding-left: $default-space / 2;
+}
+
+%padding--sides--2x {
+	padding-right: $default-space * 2;
+	padding-left: $default-space * 2;
+}
+
+%padding--smallest {
+	padding-top: $default-space--smallest;
+	padding-right: $default-space--smallest;
+	padding-bottom: $default-space--smallest;
+	padding-left: $default-space--smallest;
+}
+
+%padding--verticals {
+	padding-top: $default-space;
+	padding-bottom: $default-space;
+}
+
+%padding--verticals--half {
+	padding-top: $default-space / 2;
+	padding-bottom: $default-space / 2;
+}
+
+%padding--verticals--2x {
+	padding-top: $default-space * 2;
+	padding-bottom: $default-space * 2;
+}
+
+%padding-top {
+	padding-top: $default-space;
+}
+
+%padding-top--half {
+	padding-top: $default-space / 2;
+}
+
+%padding-top--2x {
+	padding-top: $default-space * 2;
+}
+
+%padding-top--smallest {
+	padding-top: $default-space--smallest;
+}
+
+%padding-right {
+	padding-right: $default-space;
+}
+
+%padding-right--half {
+	padding-right: $default-space / 2;
+}
+
+%padding-right--2x {
+	padding-right: $default-space * 2;
+}
+
+%padding-right--smallest {
+	padding-right: $default-space--smallest;
+}
+
+%padding-bottom {
+	padding-bottom: $default-space;
+}
+
+%padding-bottom--half {
+	padding-bottom: $default-space / 2;
+}
+
+%padding-bottom--2x {
+	padding-bottom: $default-space * 2;
+}
+
+%padding-bottom--smallest {
+	padding-bottom: $default-space--smallest;
+}
+
+%padding-left {
+	padding-left: $default-space;
+}
+
+%padding-left--half {
+	padding-left: $default-space / 2;
+}
+
+%padding-left--2x {
+	padding-left: $default-space * 2;
+}
+
+%padding-left--smallest {
+	padding-left: $default-space--smallest;
+}
+
+@if ($include-margin) {
+
+	.margin {
+		@extend %margin;
+	}
+
+	@if ($include-half and $include-half-margin) {
+		.margin--half {
+			@extend %margin--half;
+		}
+	}
+
+	@if ($include-2x and $include-2x-margin) {
+		.margin--2x {
+			@extend %margin--2x;
+		}
+	}
+
+	@if ($include-sides and $include-sides-margin) {
+		.margin--sides {
+			@extend %margin--sides;
+		}
+	}
+
+	@if ($include-half and $include-half-margin and $include-sides and $include-sides-margin) {
+		.margin--sides--half {
+			@extend %margin--sides--half;
+		}
+	}
+
+	@if ($include-2x and $include-2x-margin and $include-sides and $include-sides-margin) {
+		.margin--sides--2x {
+			@extend %margin--sides--2x;
+		}
+	}
+
+	@if ($include-smallest and $include-smallest-margin) {
+		.margin--smallest {
+			@extend %margin--smallest;
+		}
+	}
+
+	@if ($include-verticals and $include-verticals-margin) {
+		.margin--verticals {
+			@extend %margin--verticals;
+		}
+	}
+
+	@if ($include-half and $include-half-margin and $include-verticals and $include-verticals-margin) {
+		.margin--verticals--half {
+			@extend %margin--verticals--half;
+		}
+	}
+
+	@if ($include-2x and $include-2x-margin and $include-verticals and $include-verticals-margin) {
+		.margin--verticals--2x {
+			@extend %margin--verticals--2x;
+		}
+	}
+
+}
+
+@if ($include-padding) {
+
+	.padding {
+		@extend %padding;
+	}
+
+	@if ($include-half and $include-half-padding) {
+		.padding--half {
+			@extend %padding--half;
+		}
+	}
+
+	@if ($include-2x and $include-2x-padding) {
+		.padding--2x {
+			@extend %padding--2x;
+		}
+	}
+
+	@if ($include-sides and $include-sides-padding) {
+		.padding--sides {
+			@extend %padding--sides;
+		}
+	}
+
+	@if ($include-half and $include-half-padding and $include-sides and $include-sides-padding) {
+		.padding--sides--half {
+			@extend %padding--sides--half;
+		}
+	}
+
+	@if ($include-2x and $include-2x-padding and $include-sides and $include-sides-padding) {
+		.padding--sides--2x {
+			@extend %padding--sides--2x;
+		}
+	}
+
+	@if ($include-smallest and $include-smallest-padding) {
+		.padding--smallest {
+			@extend %padding--smallest;
+		}
+	}
+
+	@if ($include-verticals and $include-verticals-padding) {
+		.padding--verticals {
+			@extend %padding--verticals;
+		}
+	}
+
+	@if ($include-half and $include-half-padding and $include-verticals and $include-verticals-padding) {
+		.padding--verticals--half {
+			@extend %padding--verticals--half;
+		}
+	}
+
+	@if ($include-2x and $include-2x-padding and $include-verticals and $include-verticals-padding) {
+		.padding--verticals--2x {
+			@extend %padding--verticals--2x;
+		}
+	}
+
+}
+
+@if ($include-margin) {
+	@if ($include-margin-top) {
+		@include space-property("margin-top");
+	}
+	@if ($include-margin-right) {
+		@include space-property("margin-right");
+	}
+	@if ($include-margin-bottom) {
+		@include space-property("margin-bottom");
+	}
+	@if ($include-margin-left) {
+		@include space-property("margin-left");
+	}
+}
+
+@if ($include-padding) {
+	@if ($include-padding-top) {
+		@include space-property("padding-top");
+	}
+	@if ($include-padding-right) {
+		@include space-property("padding-right");
+	}
+	@if ($include-padding-bottom) {
+		@include space-property("padding-bottom");
+	}
+	@if ($include-padding-left) {
+		@include space-property("padding-left");
+	}
+}
+
+
+/* ==========================================================================
+   @media screen breakpoint
+   ========================================================================== */
+@if ($include-breakpoint) {
+	@media screen and ( max-width: $default-space__breakpoint ) {
+
+		@if ($include-margin) {
+			@if ($include-margin-top) {
+				@include space-property("margin-top", $default-space--smaller, false);
+			}
+			@if ($include-margin-top) {
+				@include space-property("margin-right", $default-space--smaller, false);
+			}
+			@if ($include-margin-top) {
+				@include space-property("margin-bottom", $default-space--smaller, false);
+			}
+			@if ($include-margin-top) {
+				@include space-property("margin-left", $default-space--smaller, false);
+			}
+		}
+
+		@if ($include-padding) {
+			@if ($include-padding-top) {
+				@include space-property("padding-top", $default-space--smaller, false);
+			}
+			@if ($include-padding-top) {
+				@include space-property("padding-right", $default-space--smaller, false);
+			}
+			@if ($include-padding-top) {
+				@include space-property("padding-bottom", $default-space--smaller, false);
+			}
+			@if ($include-padding-top) {
+				@include space-property("padding-left", $default-space--smaller, false);
+			}
+		}
+
+		@if ($include-margin) {
+
+			.margin {
+				margin-top: $default-space--smaller;
+				margin-right: $default-space--smaller;
+				margin-bottom: $default-space--smaller;
+				margin-left: $default-space--smaller;
+			}
+
+			@if ($include-half and $include-half-margin) {
+				.margin--half {
+					margin-top: $default-space--smaller / 2;
+					margin-right: $default-space--smaller / 2;
+					margin-bottom: $default-space--smaller / 2;
+					margin-left: $default-space--smaller / 2;
+				}
+			}
+
+			@if ($include-2x and $include-2x-margin) {
+				.margin--2x {
+					margin-top: $default-space--smaller * 2;
+					margin-right: $default-space--smaller * 2;
+					margin-bottom: $default-space--smaller * 2;
+					margin-left: $default-space--smaller * 2;
+				}
+			}
+
+			@if ($include-sides and $include-sides-margin) {
+				.margin--sides {
+					margin-right: $default-space--smaller;
+					margin-left: $default-space--smaller;
+				}
+			}
+
+			@if ($include-half and $include-half-margin and $include-sides and $include-sides-margin) {
+				.margin--sides--half {
+					margin-right: $default-space--smaller / 2;
+					margin-left: $default-space--smaller / 2;
+				}
+			}
+
+			@if ($include-2x and $include-2x-margin and $include-sides and $include-sides-margin) {
+				.margin--sides--2x {
+					margin-right: $default-space--smaller * 2;
+					margin-left: $default-space--smaller * 2;
+				}
+			}
+
+			@if ($include-verticals and $include-verticals-margin) {
+				.margin--verticals {
+					margin-top: $default-space--smaller;
+					margin-bottom: $default-space--smaller;
+				}
+			}
+
+			@if ($include-half and $include-half-margin and $include-verticals and $include-verticals-margin) {
+				.margin--verticals--half {
+					margin-top: $default-space--smaller / 2;
+					margin-bottom: $default-space--smaller / 2;
+				}
+			}
+
+			@if ($include-2x and $include-2x-margin and $include-verticals and $include-verticals-margin) {
+				.margin--verticals--2x {
+					margin-top: $default-space--smaller * 2;
+					margin-bottom: $default-space--smaller * 2;
+				}
+			}
+
+		}
+
+		@if ($include-padding) {
+
+			.padding {
+				padding-top: $default-space--smaller;
+				padding-right: $default-space--smaller;
+				padding-bottom: $default-space--smaller;
+				padding-left: $default-space--smaller;
+			}
+
+			@if ($include-half and $include-half-padding) {
+				.padding--half {
+					padding-top: $default-space--smaller / 2;
+					padding-right: $default-space--smaller / 2;
+					padding-bottom: $default-space--smaller / 2;
+					padding-left: $default-space--smaller / 2;
+				}
+			}
+
+			@if ($include-2x and $include-2x-padding) {
+				.padding--2x {
+					padding-top: $default-space--smaller * 2;
+					padding-right: $default-space--smaller * 2;
+					padding-bottom: $default-space--smaller * 2;
+					padding-left: $default-space--smaller * 2;
+				}
+			}
+
+			@if ($include-sides and $include-sides-padding) {
+				.padding--sides {
+					padding-right: $default-space--smaller;
+					padding-left: $default-space--smaller;
+				}
+			}
+
+			@if ($include-half and $include-half-padding and $include-sides and $include-sides-padding) {
+				.padding--sides--half {
+					padding-right: $default-space--smaller / 2;
+					padding-left: $default-space--smaller / 2;
+				}
+			}
+
+			@if ($include-2x and $include-2x-padding and $include-sides and $include-sides-padding) {
+				.padding--sides--2x {
+					padding-right: $default-space--smaller * 2;
+					padding-left: $default-space--smaller * 2;
+				}
+			}
+
+			@if ($include-verticals and $include-verticals-padding) {
+				.padding--verticals {
+					padding-top: $default-space--smaller;
+					padding-bottom: $default-space--smaller;
+				}
+			}
+
+			@if ($include-half and $include-half-padding and $include-verticals and $include-verticals-padding) {
+				.padding--verticals--half {
+					padding-top: $default-space--smaller / 2;
+					padding-bottom: $default-space--smaller / 2;
+				}
+			}
+
+			@if ($include-2x and $include-2x-padding and $include-verticals and $include-verticals-padding) {
+				.padding--verticals--2x {
+					padding-top: $default-space--smaller * 2;
+					padding-bottom: $default-space--smaller * 2;
+				}
+			}
+
+		}
+
+	}
+
+}
+
+
+

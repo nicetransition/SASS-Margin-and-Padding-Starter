@@ -1,0 +1,163 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>OOCSS Spacing Examples</title>
+
+		<link rel="stylesheet" href="assets/css/spacing.css" />
+		<link rel="stylesheet" href="assets/css/styles.css" />
+
+	</head>
+	<body>
+
+		<div class="container demo padding-top padding-bottom--2x">
+
+			<h1>
+				OOCSS Spacing Examples
+			</h1>
+			<p>
+				These examples are based on my <code>$default-space</code> in "_variables.scss" being set to <code>20px</code>.
+			</p>
+
+			<h2 class="padding-top--2x">
+				Basic examples
+			</h2>
+			<p>
+				The naming convention is using the <code>.margin</code> for top/right/bottom/left to receive margin of your default space and <code>.padding</code> for top/right/bottom/left to receive padding of your default space to the container.
+			</p>
+			<p>
+				The naming convention for a specific side is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + (<code>top</code> or <code>right</code> or <code>bottom</code> or <code>left</code>)"
+			</p>
+			<p>
+				The naming convention for both left and right is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + <code>sides</code>"
+			</p>
+			<p>
+				The naming convention for both top and bottom is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + <code>verticals</code>"
+			</p>
+			<h3>
+				.padding
+			</h3>
+			<div class="demo__example padding">
+				I have a padding of 20px all around me using <code>.padding</code>
+				<div class="demo__example__element margin">
+					I have a margin of 20px around me using <code>.margin</code>
+				</div>
+				<div class="demo__example__element margin padding--half">
+					I have a margin of 20px around me using <code>.margin</code> and padding of 10px using <code>.padding--half</code>
+				</div>
+			</div>
+			<h3>
+				.padding-top
+			</h3>
+			<div class="demo__example padding-top">
+				I have a padding top of 20px using <code>.padding-top</code>
+				<div class="demo__example__element margin-right padding">
+					I have a margin right of 20px using <code>.margin-right</code> and padding of 20px using <code>.padding</code>
+				</div>
+			</div>
+			<h3>
+				.padding-right
+			</h3>
+			<div class="demo__example align--right padding-right">
+				I have a padding right of 20px using <code>.padding-right</code>
+				<div class="demo__example__element margin-left padding">
+					I have a margin left of 20px using <code>.margin-left</code> and padding of 20px using <code>.padding</code>
+				</div>
+			</div>
+			<h3>
+				.padding-bottom
+			</h3>
+			<div class="demo__example padding-bottom">
+				I have a padding bottom of 20px using <code>.padding-bottom</code>
+				<div class="demo__example__element margin-top padding">
+					I have a margin top of 20px using <code>.margin-top</code> and padding of 20px using <code>.padding</code>
+				</div>
+			</div>
+			<h3>
+				.padding-left
+			</h3>
+			<div class="demo__example padding-left">
+				I have a padding left of 20px using <code>.padding-left</code>
+			</div>
+			<h3>
+				.padding--verticals
+			</h3>
+			<div class="demo__example padding--verticals">
+				I have a padding for top and bottom of 20px using <code>.padding--verticals</code>
+			</div>
+			<h3>
+				.padding--sides
+			</h3>
+			<div class="demo__example padding--sides">
+				I have a padding left and right of 20px using <code>.padding--sides</code>
+			</div>
+
+			<h2 class="padding-top--2x">
+				Size variations
+			</h2>
+			<p>
+				The naming convention for top, right, left, bottom to receive 2x or half the default space is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + <code>--</code> + (<code>2x</code> or <code>half</code>)"
+			</p>
+			<p>
+				The naming convention for top, right, left, bottom to receive alternative &quot;smallest size&quot; is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + <code>--</code> + (<code>smallest</code>)"
+			</p>
+			<p>
+				The naming convention for a specific side to receive modified size variation is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + (<code>top</code> or <code>right</code> or <code>bottom</code> or <code>left</code>) + <code>--</code> + (<code>2x</code> or <code>half</code> or <code>smallest</code>)"
+			</p>
+			<p>
+				The naming convention for both left and right to receive modified size variation is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + <code>sides</code> + <code>--</code> + (<code>2x</code> or <code>half</code> or <code>smallest</code>)"
+			</p>
+			<p>
+				The naming convention for both top and bottom to receive modified size variation is: "<code>.</code> + (<code>margin</code> or <code>padding</code> ) + <code>verticals</code> + <code>--</code> + (<code>2x</code> or <code>half</code> or <code>smallest</code>)"
+			</p>
+			<h3>
+				.padding--2x
+			</h3>
+			<div class="demo__example padding--2x">
+				I have a padding of 40px all around me using <code>.padding--2x</code>
+			</div>
+			<h3>
+				.padding--verticals--2x
+			</h3>
+			<div class="demo__example padding--verticals--2x">
+				I have a padding for top and bottom of 40px using <code>.padding--verticals--2x</code>
+			</div>
+			<h3>
+				.padding--sides--2x
+			</h3>
+			<div class="demo__example padding--sides--2x">
+				I have a padding left and right of 40px using <code>.padding--sides--2x</code>
+			</div>
+
+			<h2>
+				Half examples
+			</h2>
+			<h3>
+				.padding--half
+			</h3>
+			<div class="demo__example padding--half">
+				I have a padding of 10px all around me using <code>.padding--half</code>
+			</div>
+			<h3>
+				.padding--verticals--half
+			</h3>
+			<div class="demo__example padding--verticals--half">
+				I have a padding for top and bottom of 10px using <code>.padding--verticals--half</code>
+			</div>
+			<h3>
+				.padding--sides--half
+			</h3>
+			<div class="demo__example padding--sides--half">
+				I have a padding left and right of 10px using <code>.padding--sides--half</code>
+			</div>
+
+		</div>
+
+	</body>
+</html>

@@ -6,6 +6,10 @@ Spacing is one of the most fundamental pieces of a website design, using this st
 * Generate margin and padding for your project
 * Ideal for object-oriented CSS
 
+
+**View the demo**: [http://kevinmack18.github.io/SASS-Margin-and-Padding-Starter/](http://kevinmack18.github.io/SASS-Margin-and-Padding-Starter/)
+
+
 ---
 
 ### Sass Option

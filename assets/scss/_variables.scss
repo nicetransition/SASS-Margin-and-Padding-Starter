@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Global Variables
+   ========================================================================== */
+
+/*
+ * Global Spaces
+ * Variables used in "spacing.scss"
+ */
+$default-space: 20px;
+$default-space--half: $default-space / 2;
+$default-space--smaller: $default-space--half;
+$default-space--smallest: 5px;
+$default-space--2x: $default-space * 2;
+$default-space__breakpoint: 400px;
+
+$include-margin: true;
+$include-margin-top: true;
+$include-margin-right: true;
+$include-margin-bottom: true;
+$include-margin-left: true;
+
+$include-padding: true;
+$include-padding-top: true;
+$include-padding-right: true;
+$include-padding-bottom: true;
+$include-padding-left: true;
+
+$include-half: true;
+$include-half-margin: true;
+$include-half-padding: true;
+
+$include-smaller: true;
+$include-smaller-margin: true;
+$include-smaller-padding: true;
+
+$include-smallest: true;
+$include-smallest-margin: true;
+$include-smallest-padding: true;
+
+$include-smallest: true;
+$include-smallest-margin: true;
+$include-smallest-padding: true;
+
+$include-2x: true;
+$include-2x-margin: true;
+$include-2x-padding: true;
+
+$include-breakpoint: true;
+
+
+
+

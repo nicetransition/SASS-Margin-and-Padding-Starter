@@ -1,33 +1,22 @@
-SASS-Margin-and-Padding-Starter
+OOCSS Spacing [v2.0.0]
 ===============================
 
-SASS Padding and Margin Starter .SCSS is used to generate classes for margin and padding spaces in your project. Ideal for object-oriented CSS.
+Spacing is one of the most fundamental pieces of a website design, using this starter kit will help you maintain consistent spacing throughout your project. This is a [Sass](http://sass-lang.com/) file for creating global spacing for your projects. The repository includes a compressed compiled version in CSS.
 
-### Purpose
+* Generate margin and padding for your project
+* Ideal for object-oriented CSS
 
-Used to generate margin and padding for your project. Ideal for object-oriented CSS.
+---
 
+## Use
 
-### Setup
+## Sass Option
+Include "space.scss" in your project and adjust variables within "_variables.scss".
 
-Requires [SASS](http://sass-lang.com/) 3.2.x
+It is recommended to change the file to a [partial](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#partials) and `@import "spacing"` in your main output file.
 
-<pre>
-$ cd {~path to directory~}/assets
-$ sass --watch scss:css --style compressed
-</pre>
+### Dependencies
+* [Sass](http://sass-lang.com/) 3.2.x
 
-
-### Release History
-
-* 01.31.13 - Initial Release
-* 02.14.13 - Updates for *"-sides", this was originally missing in the Initial Release. Also updated the initial size from 40px to 20px, for the example.
-* 04.15.13 - Updates to documentation and a few whitespace spots removed. Moved media query to top of the file. Introduced official versions and branches. Welcome `v1.1`
-
-
-### Ect
-
-`@import` "spacing.scss" in your global *.scss file OR just put the following code within your global *.scss file.
-<pre>
-@import "spacing";
-</pre>
+## Css Option
+Input the "spacing.css" file in your project or copy/paste the code into your project. The default space (20px) is used "spacing.css".

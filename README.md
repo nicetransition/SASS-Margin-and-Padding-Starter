@@ -1,4 +1,4 @@
-OOCSS Spacing [v2.0.0]
+OOCSS Spacing [v2.1.0]
 ===============================
 
 Spacing is one of the most fundamental pieces of a website design, using this starter kit will help you maintain consistent spacing throughout your project. This is a [Sass](http://sass-lang.com/) file for creating global spacing for your projects. The repository includes a compressed compiled version in CSS.
@@ -13,7 +13,7 @@ Spacing is one of the most fundamental pieces of a website design, using this st
 ---
 
 ### Sass Option
-Include "space.scss" in your project and adjust variables within "_variables.scss".
+Include "space.scss" in your project and adjust variables at the top of the Sass file.
 
 It is recommended to change the file to a [partial](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#partials) and `@import "spacing"` in your main output file.
 

@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Spacing Variables
+   ========================================================================== */
+
+$default-space: 20px;
+$default-space--half: $default-space / 2;
+$default-space--smaller: $default-space--half;
+$default-space--smallest: 5px;
+$default-space--2x: $default-space * 2;
+$default-space__breakpoint: 400px; // Breakpoint value for overwriting `$default-space`
+
+$include-margin: true; // Include margin-top, margin-right, margin-bottom, margin-left
+$include-margin-top: true; // Include margin-top
+$include-margin-right: true; // Include margin-right
+$include-margin-bottom: true; // Include margin-bottom
+$include-margin-left: true; // Include margin-left
+
+$include-padding: true; // Include padding-top, padding-right, padding-bottom, padding-left
+$include-padding-top: true; // Include padding-top
+$include-padding-right: true; // Include padding-right
+$include-padding-bottom: true; // Include padding-bottom
+$include-padding-left: true; // Include padding-left
+
+$include-half: true; // Include `$default-space / 2` for padding and margin
+$include-half-margin: true; // Include `$default-space / 2` for margin
+$include-half-padding: true; // Include `$default-space / 2` for padding
+
+$include-smaller: true; // Include `$default-space-smaller` for padding and margin
+$include-smaller-margin: true; // Include `$default-space-smaller` for margin
+$include-smaller-padding: true; // Include `$default-space-smaller` for padding
+
+$include-smallest: true; // Include `$default-space-smallest` for padding and margin
+$include-smallest-margin: true; // Include `$default-space-smallest` for margin
+$include-smallest-padding: true; // Include `$default-space-smallest` for padding
+
+$include-2x: true; // Include `$default-space * 2x` for padding and margin
+$include-2x-margin: true; // Include `$default-space * 2x` for margin
+$include-2x-padding: true; // Include `$default-space * 2x`for padding
+
+$include-verticals: true; // Include margin-top, margin-bottom, padding-top, and padding-bottom spaces
+$include-verticals-margin: true; // Include margin-top and margin-bottom spaces
+$include-verticals-padding: true; // Include padding-top and padding-bottom spaces
+$include-sides: true; // Include margin-left, margin-right, padding-left, and padding-right spaces
+$include-sides-margin: true; // Include margin-left and margin-right spaces
+$include-sides-padding: true; // Include padding-left and padding-right spaces
+
+$include-breakpoint: true; // Compile the media-query at `$default-space__breakpoint` tor educe default spaces in half for smaller viewports
+

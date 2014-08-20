@@ -1,16 +1,34 @@
 // Spacing/Unit Variables and Objects
 
-$default-space: 100px;
-$default-breakpoint: 600px;
+$units__default-unit: 1.250em;
+$default-unit: $units__default-unit;
+$units__default-breakpoint: 31.250em;
+$units__include-box-sizing: true;
+
+// OPTIONS:
+// * "selector-name": String (no spaces and can't start with a number). Optional. Used to change output selector name.
+// * "selector-suffix": String (no spaces). Optional. This is appended to the end of the output selector
+// * "media-query-max": Number. Optional. Uses `@media screen (max-width: "this value"){}`
+// * "unit--media-query-max":Number. Optional; Required when `media-query-max` is used. Is applied unit to `variation` options within the media query. Fallback unit is `unit`.
+// * "media-query-min": Number. Optional. Uses `@media screen (min-width: "this value"){}``
+// * "unit--media-query-min": Number. Optional; Required when `media-query-min` is used. Is applied unit to `variation` options within the media query. Fallback unit is `unit`.
+// * "unit": Required. Number. Required. Default unit. Is fallback unit for `unit--media-query-min` and `unit--media-query-max` when `media-query-min` and `media-query-max` are used and no unit is applied.
+// * "variations": Sass Map. Required. Contains the variations of output properites.
+// * 	"base": Options: true | false | short. Required. Outputs default unit. When value is `short` this key is used to output `padding` and `margin` property's shorthand.
+// * 	"top": Boolean. Required. Outputs variation of property (`padding-top`, `margin-top`)
+// * 	"right": Boolean. Required. Outputs variation of property (`padding-right`, `margin-right`)
+// * 	"bottom": Boolean. Required. Outputs variation of property (`padding-bottom`, `margin-bottom`)
+// * 	"left": Boolean. Required. Outputs variation of property (`padding-left`, `margin-left`)
+
 
 $units: (
-	"padding": (
-		"default": (
-			"media-query-max": $default-breakpoint, 
-			"unit--media-query-max": $default-space / 2, 
-			"media-query-min": $default-breakpoint + 1,
-			"unit--media-query-min": $default-space,
-			"unit": $default-space,
+	"padding": ( // optional key, used to out padding units
+		"default": ( // "`default` is required" under "padding" key
+			"media-query-max": $units__default-breakpoint, 
+			"unit--media-query-max": $default-unit / 2, 
+			"media-query-min": $units__default-breakpoint,
+			"unit--media-query-min": $default-unit,
+			"unit": $default-unit,
 			"variations": (
 				"base": true,
 				"top": true,
@@ -20,11 +38,12 @@ $units: (
 			)
 		),
 		"two-times": (
-			"media-query-max": $default-breakpoint, 
-			"unit--media-query-max": $default-space, 
-			"media-query-min": $default-breakpoint + 1,
-			"unit--media-query-min": $default-space * 2,
-			"unit": $default-space * 2,
+			"suffix": "--2x",
+			"media-query-max": $units__default-breakpoint, 
+			"unit--media-query-max": $default-unit, 
+			"media-query-min": $units__default-breakpoint,
+			"unit--media-query-min": $default-unit * 2,
+			"unit": $default-unit * 2,
 			"variations": (
 				"base": true,
 				"top": true,
@@ -33,6 +52,59 @@ $units: (
 				"left": true
 			)
 		),
+		"half-sized": (
+			"suffix": "--half",
+			"unit": $default-unit / 2,
+			"variations": (
+				"base": true,
+				"top": true,
+				"right": true,
+				"bottom": true,
+				"left": true
+			)
+		)
+	),
+	"margin": ( // optional key, used to out padding units
+		"default": ( // "`default` is required" under "padding" key
+			"media-query-max": $units__default-breakpoint, 
+			"unit--media-query-max": $default-unit / 2, 
+			"media-query-min": $units__default-breakpoint,
+			"unit--media-query-min": $default-unit,
+			"unit": $default-unit,
+			"variations": (
+				"base": true,
+				"top": true,
+				"right": true,
+				"bottom": true,
+				"left": true
+			)
+		),
+		"two-times": (
+			"suffix": "--2x",
+			"media-query-max": $units__default-breakpoint, 
+			"unit--media-query-max": $default-unit, 
+			"media-query-min": $units__default-breakpoint,
+			"unit--media-query-min": $default-unit * 2,
+			"unit": $default-unit * 2,
+			"variations": (
+				"base": true,
+				"top": true,
+				"right": true,
+				"bottom": true,
+				"left": true
+			)
+		),
+		"half-sized": (
+			"suffix": "--half",
+			"unit": $default-unit / 2,
+			"variations": (
+				"base": true,
+				"top": true,
+				"right": true,
+				"bottom": true,
+				"left": true
+			)
+		)
 	)
 );
 

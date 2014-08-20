@@ -1,25 +1,25 @@
-/*!
- * OOCSS Spacing vT.B.D.
- * Github: https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter
- * Demo: http://kevinmack18.github.io/SASS-Margin-and-Padding-Starter/
- *
- * Released under the MIT license
- * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
- *
- * Date: TBD
- */
+/*! * [Spacing Units v3.0.0](https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter) */
+ // * Github: https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter
+ // * Demo: http://kevinmack18.github.io/SASS-Margin-and-Padding-Starter/
+ // * Released under the MIT license
+ // * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
+ // * Version: v3.0.0
+ // * Date: 2014-08-20
+ 
 
-@import "variables";
+@import "units__variables.scss";
 
-*, *:before, *:after {
-	box-sizing: border-box;
+@if ( $units__include-box-sizing ) {
+	*, *:before, *:after {
+		box-sizing: border-box;
+	}
 }
 
 @mixin generateUnits($property: padding, $version: default, $variation: base ) {
 
 		$versions: map-get($units, $property);
 		$values: map-get($versions, $version);
-		$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-space);
+		$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-unit);
 		$selector-base: if(map-has-key($values, "selector-name"),map-get($values, "selector-name"),$property);
 		$variations: map-get($values, "variations");
 		$selector-suffix: if(map-has-key($values, "suffix"),map-get($values, "suffix"),"");
@@ -29,7 +29,7 @@
 		$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
 		$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
 		
-		
+
 		@each $variation, $boolean in $variations {
 
 			@if( $variation != "base" ) {
@@ -65,11 +65,12 @@
 					}
 				}
 
-				//$media-query-min: #{$media-query-min}
-				//$unit--media-query-min: #{$unit--media-query-min}
-				//$media-query-max: #{$media-query-max}
-				//$unit--media-query-max: #{$unit--media-query-max}
-				//Both have breakpoints: #{$units-are-controlled-by-breakpoints}
+				// Verify variables (for testing)
+				// $media-query-min: #{$media-query-min}
+				// $unit--media-query-min: #{$unit--media-query-min}
+				// $media-query-max: #{$media-query-max}
+				// $unit--media-query-max: #{$unit--media-query-max}
+				// Both have breakpoints: #{$units-are-controlled-by-breakpoints} 
 			
 			}
 
@@ -105,9 +106,60 @@
 					@extend %#{$selector-base}-#{$variation}#{$selector-suffix} !optional;
 				}
 			}
-
-
 		}
+}
+
+// output specific properites only
+@mixin units($property: padding, $version: two-x, $variation: (base: false, top: false, right: false, bottom: true, left: false)) {
+	$variation-controls: $variation;
+	$versions: map-get($units, $property);
+	$values: map-get($versions, $version);
+	$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-unit);
+	$selector-base: if(map-has-key($values, "selector-name"),map-get($values, "selector-name"),$property);
+	$variations: map-get($values, "variations");
+	$selector-suffix: if(map-has-key($values, "suffix"),map-get($values, "suffix"),"");
+	$media-query-min: if(map-has-key($values, "media-query-min"),map-get($values, "media-query-min"),false);
+	$unit--media-query-min: if(map-has-key($values, "unit--media-query-min"),map-get($values, "unit--media-query-min"),$unit);
+	$media-query-max: if(map-has-key($values, "media-query-max"),map-get($values, "media-query-max"),false);
+	$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
+	$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
+	
+	@each $variation, $boolean in $variation-controls {
+
+		$includeVariation: map-get($variation-controls, $variation);
+		$baseDoesNotOveride: if(map-get($variation-controls, "base"), false, true);
+		$isBase: ($variation == "base");
+
+		@if( $includeVariation ) {
+
+			@if ($units-are-controlled-by-breakpoints == false) {
+				@if ($baseDoesNotOveride) {
+					#{$property}-#{$variation}: unquote($unit);
+				} @else if ($isBase) {
+					#{$property}: unquote($unit);
+				}
+			}
+
+			@if ($media-query-min) {
+				@media screen and (min-width: $media-query-min) {
+					@if ( $baseDoesNotOveride ) {
+						#{$property}-#{$variation}: unquote($unit--media-query-min);
+					} @else if ($isBase) {
+						#{$property}: unquote($unit--media-query-min);
+					}
+				}
+			}
+			@if ($media-query-max) {
+				@media screen and (max-width: $media-query-max) {
+					@if ( $baseDoesNotOveride ) {
+						#{$property}-#{$variation}: unquote($unit--media-query-max);
+					} @else if ($isBase) {
+						#{$property}: unquote($unit--media-query-max);
+					}
+				}
+			}
+		}
+	}
 }
 
 
@@ -121,5 +173,3 @@
 
 	}
 }
-
-

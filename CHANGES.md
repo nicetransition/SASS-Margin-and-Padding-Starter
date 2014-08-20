@@ -4,3 +4,4 @@
 + 2.0.0: Refactor of code, addition of %selector-names for @extend functionality, BEM naming convention, updates to documentation
 + 2.1.0: Variables moved into "spacing.scss" and removal of "_variables.scss"
 + 2.2.0: Revert back to have variables in "spacing.scss" to "_variables.scss"
++ 3.0.0: Complete rewrite to include Sass 3.3 functionality and more flexibility for RWD projects

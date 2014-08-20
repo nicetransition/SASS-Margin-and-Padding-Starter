@@ -15,12 +15,9 @@
 	box-sizing: border-box;
 }
 
-@mixin units($property: padding, $version: default, $variation: base ) {
-	/**
-	I'm the output!
-	*/
-	$versions: map-get($units, $property);
-	
+@mixin generateUnits($property: padding, $version: default, $variation: base ) {
+
+		$versions: map-get($units, $property);
 		$values: map-get($versions, $version);
 		$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-space);
 		$selector-base: if(map-has-key($values, "selector-name"),map-get($values, "selector-name"),$property);
@@ -68,17 +65,12 @@
 					}
 				}
 
-
-			
 				//$media-query-min: #{$media-query-min}
 				//$unit--media-query-min: #{$unit--media-query-min}
 				//$media-query-max: #{$media-query-max}
 				//$unit--media-query-max: #{$unit--media-query-max}
 				//Both have breakpoints: #{$units-are-controlled-by-breakpoints}
 			
-
-				
-
 			}
 
 			@if( $variation == "base" ) {
@@ -116,10 +108,6 @@
 
 
 		}
-
-
-	/*I'm the output! END*/
-	
 }
 
 

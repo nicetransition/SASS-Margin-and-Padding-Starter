@@ -15,6 +15,116 @@
 	box-sizing: border-box;
 }
 
+@mixin units($property: padding, $version: default, $variation: base ) {
+	/**
+	I'm the output!
+	*/
+	$versions: map-get($units, $property);
+	
+		$values: map-get($versions, $version);
+		$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-space);
+		$selector-base: if(map-has-key($values, "selector-name"),map-get($values, "selector-name"),$property);
+		$variations: map-get($values, "variations");
+		$selector-suffix: if(map-has-key($values, "suffix"),map-get($values, "suffix"),"");
+		$media-query-min: if(map-has-key($values, "media-query-min"),map-get($values, "media-query-min"),false);
+		$unit--media-query-min: if(map-has-key($values, "unit--media-query-min"),map-get($values, "unit--media-query-min"),$unit);
+		$media-query-max: if(map-has-key($values, "media-query-max"),map-get($values, "media-query-max"),false);
+		$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
+		$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
+		
+		
+		@each $variation, $boolean in $variations {
+
+			@if( $variation != "base" ) {
+
+				// create custom placeholder selector for versioning each group in @extend
+				$id: if($version == "default", "", $version);
+
+				// Check to see if both have breakpoints
+				@if ($units-are-controlled-by-breakpoints == false) {
+					%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
+						#{$property}-#{$variation}: unquote($unit);
+					}
+				}
+
+				%#{$selector-base}#{$selector-suffix} {
+					@if (map-get($variations, "base") == true and (map-get($variations, "base") != "short") ) {
+						@extend %#{$selector-base}-#{$variation}#{$selector-suffix}#{$id};
+					}
+				}
+
+				@if ($media-query-min) {
+					@media screen and (min-width: $media-query-min) {
+						%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
+							#{$property}-#{$variation}: unquote($unit--media-query-min);
+						}
+					}
+				}
+				@if ($media-query-max) {
+					@media screen and (max-width: $media-query-max) {
+						%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
+							#{$property}-#{$variation}: unquote($unit--media-query-max);
+						}
+					}
+				}
+
+
+			
+				//$media-query-min: #{$media-query-min}
+				//$unit--media-query-min: #{$unit--media-query-min}
+				//$media-query-max: #{$media-query-max}
+				//$unit--media-query-max: #{$unit--media-query-max}
+				//Both have breakpoints: #{$units-are-controlled-by-breakpoints}
+			
+
+				
+
+			}
+
+			@if( $variation == "base" ) {
+				@if (map-get($variations, "base") == "short") {
+					%#{$selector-base}#{$selector-suffix} {
+						#{$property}: $unit;
+					}
+
+					@if ($media-query-min) {
+						@media screen and (min-width: $media-query-min) {
+							%#{$selector-base}#{$selector-suffix} {
+								#{$property}: unquote($unit--media-query-min);
+							}
+						}
+					}
+					@if ($media-query-max) {
+						@media screen and (max-width: $media-query-max) {
+							%#{$selector-base}#{$selector-suffix} {
+								#{$property}: unquote($unit--media-query-max);
+							}
+						}
+					}
+				}
+
+				.#{$selector-base}#{$selector-suffix} {
+					@extend %#{$selector-base}#{$selector-suffix} !optional;
+				}
+			}
+
+			@if( $variation != "base" and (map-get($variations, $variation) == true) ) {
+				.#{$selector-base}-#{$variation}#{$selector-suffix} {
+					@extend %#{$selector-base}-#{$variation}#{$selector-suffix} !optional;
+				}
+			}
+
+
+		}
+
+
+	/*I'm the output! END*/
+	
+}
+
+
+@include units();
+
 
 @each $property, $items in $units {
 

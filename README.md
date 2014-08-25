@@ -46,11 +46,11 @@ If using `padding` and/or `margin`, they do require to have their first variatio
 * "**unit--media-query-min**": *Number*. Optional; Required when `media-query-min` is used. Is applied unit to `variation` options within the media query. Fallback unit is `unit`.
 * "**unit**": Required. *Number*. Required. Default unit. Is fallback unit for `unit--media-query-min` and `unit--media-query-max` when `media-query-min` and `media-query-max` are used and no unit is applied.
 * "**variations**": Sass Map. Required. Contains the variations of output properites.
-  * "base**": Options: `true` | `false` | `short`. Required. Outputs default unit. When value is `short` this key is used to output `padding` and `margin` property's shorthand.
-  * "top**": *Boolean*. Required. Outputs variation of property (`padding-top`, `margin-top`)
-  * "right**": *Boolean*. Required. Outputs variation of property (`padding-right`, `margin-right`)
-  * "bottom**": *Boolean*. Required. Outputs variation of property (`padding-bottom`, `margin-bottom`)
-  * "left**": *Boolean*. Required. Outputs variation of property (`padding-left`, `margin-left`)
+  * "**base**": Options: `true` | `false` | `short`. Required. Outputs default unit. When value is `short` this key is used to output `padding` and `margin` property's shorthand.
+  * "**top**": *Boolean*. Required. Outputs variation of property (`padding-top`, `margin-top`)
+  * "**right**": *Boolean*. Required. Outputs variation of property (`padding-right`, `margin-right`)
+  * "**bottom**": *Boolean*. Required. Outputs variation of property (`padding-bottom`, `margin-bottom`)
+  * "**left**": *Boolean*. Required. Outputs variation of property (`padding-left`, `margin-left`)
 
 If `variations` is set to `false`, the output will be a Sass [%placeholder selector](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_). If set to `true`, both compiled selectors and %placeholders will be available to use.
 

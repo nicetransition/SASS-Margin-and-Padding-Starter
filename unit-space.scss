@@ -4,7 +4,7 @@
  // * Released under the MIT license
  // * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
  // * Version: v3.0.0
- // * Date: 2014-08-24
+ // * Date: 2014-08-25
  
 
 @import "unit_space__variables";
@@ -110,7 +110,7 @@
 }
 
 // output specific properites only
-@mixin units($property: padding, $version: two-x, $variation: (base: false, top: false, right: false, bottom: true, left: false)) {
+@mixin units($property: "padding", $version: "default", $variation: (base: true, top: true, right: true, bottom: true, left: true)) {
 	$variation-controls: $variation;
 	$versions: map-get($units, $property);
 	$values: map-get($versions, $version);

@@ -54,7 +54,9 @@ If using `padding` and/or `margin`, they do require to have their first variatio
 
 If `variations` is set to `false`, the output will be a Sass [%placeholder selector](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#placeholder_selectors_). If set to `true`, both compiled selectors and %placeholders will be available to use.
 
-## Compiled Output
+
+
+### Compiled Output
 Showing in an example below, comment after shows output
 
 ````
@@ -82,7 +84,7 @@ Showing in an example below, comment after shows output
 ...
 ````
 
-### Custom Selector Output
+#### Custom Selector Output
 
 ````
 ...
@@ -121,6 +123,69 @@ Showing in an example below, comment after shows output
 		),
 ...
 ````
+
+
+### `unit()` Mixin
+Ouput the compiled CSS properties from a map object into another selector. 
+
+**Options**:
+
+* `$property`: Options `padding` | `margin`. Default is `padding`. 
+* `$version`: "custom-name". Default is `default`. 
+* `$variation`: Contains the variations of output properites. When option is set to `true` it will ouput the property and property value.
+  * "**base**": *Boolean*. Default is `true`. Outputs default unit. When value is `short` this key is used to output `padding` and `margin` property's shorthand. 
+  * "**top**": *Boolean*. Default is `true`. Outputs variation of property (`padding-top`, `margin-top`)
+  * "**right**": *Boolean*. Default is `true`. Outputs variation of property (`padding-right`, `margin-right`)
+  * "**bottom**": *Boolean*. Default is `true`. Outputs variation of property (`padding-bottom`, `margin-bottom`)
+  * "**left**": *Boolean*. Default is `true`. Outputs variation of property (`padding-left`, `margin-left`)
+
+**Example**: 
+```
+.some-selector-name {
+	@include units($property: "padding", $version: "default", $variation: (base: false, top: false, right: false, bottom: true, left: false));	
+
+}
+```
+**Output**: 
+```
+@media screen and (min-width: 31.25em) {
+	.some-other-selector-name {
+		padding-bottom: 2.5em; 
+	} 
+}
+@media screen and (max-width: 31.25em) {
+	.some-other-selector-name {
+		padding-bottom: 1.25em; 
+	} 
+}
+```
+
+### `@extend` with %Placeholder Selectors
+
+Each variation (including defaults) have a %placeholder selector that aligns with its compiled output selector name.
+
+**Example**:
+
+```
+.extend-demo {
+	@extend %padding-top;
+}
+
+**Output**:
+```
+@media screen and (min-width: 31.25em) {
+	.padding, .extend-demo {
+		padding-top: 1.25em; 
+	} 
+}
+@media screen and (max-width: 31.25em) {
+	.padding, .extend-demo {
+		padding-top: 0.625em; 
+	} 
+}
+
+```
+
 
 ---
 

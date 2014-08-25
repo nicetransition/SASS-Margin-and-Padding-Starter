@@ -140,14 +140,17 @@ Ouput the compiled CSS properties from a map object into another selector.
   * "**left**": *Boolean*. Default is `true`. Outputs variation of property (`padding-left`, `margin-left`)
 
 **Example**: 
-```
+
+````
 .some-selector-name {
 	@include units($property: "padding", $version: "default", $variation: (base: false, top: false, right: false, bottom: true, left: false));	
 
 }
-```
+````
+
 **Output**: 
-```
+
+````
 @media screen and (min-width: 31.25em) {
 	.some-other-selector-name {
 		padding-bottom: 2.5em; 
@@ -158,7 +161,7 @@ Ouput the compiled CSS properties from a map object into another selector.
 		padding-bottom: 1.25em; 
 	} 
 }
-```
+````
 
 ### `@extend` with %Placeholder Selectors
 
@@ -166,13 +169,15 @@ Each variation (including defaults) have a %placeholder selector that aligns wit
 
 **Example**:
 
-```
+````
 .extend-demo {
 	@extend %padding-top;
 }
+````
 
 **Output**:
-```
+
+````
 @media screen and (min-width: 31.25em) {
 	.padding, .extend-demo {
 		padding-top: 1.25em; 
@@ -184,7 +189,7 @@ Each variation (including defaults) have a %placeholder selector that aligns wit
 	} 
 }
 
-```
+````
 
 
 ---

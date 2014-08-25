@@ -121,3 +121,29 @@ Showing in an example below, comment after shows output
 		),
 ...
 ````
+
+---
+
+## Change Log
+
++ 0.0.0: Initial Release
++ 1.0.0: Updates for *"-sides", this was originally missing in the Initial Release. Also updated the initial size from 40px to 20px, for the example.
++ 1.1.0: Updates to documentation and a few whitespace spots removed. Moved media query to top of the file. Introduced official versions and branches. Welcome `v1.1`
++ 2.0.0: Refactor of code, addition of %selector-names for @extend functionality, BEM naming convention, updates to documentation
++ 2.1.0: Variables moved into "spacing.scss" and removal of "_variables.scss"
++ 2.2.0: Revert back to have variables in "spacing.scss" to "_variables.scss"
++ 3.0.0: Complete rewrite to include Sass 3.3 functionality and more flexibility for RWD projects
+
+---
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Kevin Mack
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

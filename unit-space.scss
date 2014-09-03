@@ -5,7 +5,6 @@
  // * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
  // * Version: v3.0.0
  // * Date: 2014-08-25
- 
 
 @import "unit_space__variables";
 
@@ -102,8 +101,10 @@
 			}
 
 			@if( $variation != "base" and (map-get($variations, $variation) == true) ) {
+				$id: if($version == "default", "", $version);
+
 				.#{$selector-base}-#{$variation}#{$selector-suffix} {
-					@extend %#{$selector-base}-#{$variation}#{$selector-suffix} !optional;
+					@extend %#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} !optional;
 				}
 			}
 		}
@@ -173,3 +174,4 @@
 
 	}
 }
+

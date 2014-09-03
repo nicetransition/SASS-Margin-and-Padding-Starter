@@ -132,7 +132,7 @@ Ouput the compiled CSS properties from a map object into another selector.
 
 * `$property`: Options `padding` | `margin`. Default is `padding`. 
 * `$version`: "custom-name". Default is `default`. 
-* `$variation`: Contains the variations of output properites. When option is set to `true` it will ouput the property and property value.
+* `$variations`: Contains the variations of output properites. When option is set to `true` it will ouput the property and property value.
   * "**base**": *Boolean*. Default is `true`. Outputs default unit. When value is `short` this key is used to output `padding` and `margin` property's shorthand. 
   * "**top**": *Boolean*. Default is `true`. Outputs variation of property (`padding-top`, `margin-top`)
   * "**right**": *Boolean*. Default is `true`. Outputs variation of property (`padding-right`, `margin-right`)
@@ -143,7 +143,7 @@ Ouput the compiled CSS properties from a map object into another selector.
 
 ````
 .some-selector-name {
-	@include units($property: "padding", $version: "default", $variation: (base: false, top: false, right: false, bottom: true, left: false));	
+	@include units($property: "padding", $version: "default", $variations: (base: false, top: false, right: false, bottom: true, left: false));	
 
 }
 ````

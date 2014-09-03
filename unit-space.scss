@@ -111,7 +111,7 @@
 }
 
 // output specific properites only
-@mixin units($property: "padding", $version: "default", $variation: (base: true, top: true, right: true, bottom: true, left: true)) {
+@mixin units($property: "padding", $version: "default", $variations: (base: true, top: true, right: true, bottom: true, left: true)) {
 	$variation-controls: $variation;
 	$versions: map-get($units, $property);
 	$values: map-get($versions, $version);

@@ -1,14 +1,10 @@
 # Unit Space
 
-**NOTE:** STILL A LOT OF WORK TO DO FOR README. I still need to do details on using the `@mixin` and cleaning this up for use. 
-
-======
-
-
 When creating an interface one of the most parts is spacing (`margin` and `padding`). Consistent units are vital for unity, balance, rhythm of your web applications. *Unit Space* is a foundation to generate create consistent spacing for your projects, no matter how many variations may be required in your system.
 
-
 *Unit Space* is built in Sass 3.3.x to provide you the most flexibility and ease of maintainability.
+
+* **View demos**: [http://codepen.io/kevinmack18/pen/OVVxpO](http://codepen.io/kevinmack18/pen/OVVxpO)
 
 ----
 
@@ -144,7 +140,6 @@ Ouput the compiled CSS properties from a map object into another selector.
 ````
 .some-selector-name {
 	@include units($property: "padding", $version: "default", $variations: (base: false, top: false, right: false, bottom: true, left: false));	
-
 }
 ````
 
@@ -210,7 +205,7 @@ Each variation (including defaults) have a %placeholder selector that aligns wit
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Kevin Mack
+Copyright (c) 2015 Kevin Mack
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

@@ -4,9 +4,10 @@
  // * Released under the MIT license
  // * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
  // * Version: v3.0.0
- // * Date: 2014-08-25
+ // * Date: 2015-04-30
 
 @import "unit_space__variables";
+
 
 @if ( $units__include-box-sizing ) {
 	*, *:before, *:after {
@@ -27,7 +28,7 @@
 		$media-query-max: if(map-has-key($values, "media-query-max"),map-get($values, "media-query-max"),false);
 		$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
 		$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
-		
+
 
 		@each $variation, $boolean in $variations {
 
@@ -39,7 +40,7 @@
 				// Check to see if both have breakpoints
 				@if ($units-are-controlled-by-breakpoints == false) {
 					%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
-						#{$property}-#{$variation}: unquote($unit);
+						#{$property}-#{$variation}: $unit;
 					}
 				}
 
@@ -52,25 +53,17 @@
 				@if ($media-query-min) {
 					@media screen and (min-width: $media-query-min) {
 						%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
-							#{$property}-#{$variation}: unquote($unit--media-query-min);
+							#{$property}-#{$variation}: $unit--media-query-min;
 						}
 					}
 				}
 				@if ($media-query-max) {
 					@media screen and (max-width: $media-query-max) {
 						%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
-							#{$property}-#{$variation}: unquote($unit--media-query-max);
+							#{$property}-#{$variation}: $unit--media-query-max;
 						}
 					}
 				}
-
-				// Verify variables (for testing)
-				// $media-query-min: #{$media-query-min}
-				// $unit--media-query-min: #{$unit--media-query-min}
-				// $media-query-max: #{$media-query-max}
-				// $unit--media-query-max: #{$unit--media-query-max}
-				// Both have breakpoints: #{$units-are-controlled-by-breakpoints} 
-			
 			}
 
 			@if( $variation == "base" ) {
@@ -82,14 +75,14 @@
 					@if ($media-query-min) {
 						@media screen and (min-width: $media-query-min) {
 							%#{$selector-base}#{$selector-suffix} {
-								#{$property}: unquote($unit--media-query-min);
+								#{$property}: $unit--media-query-min;
 							}
 						}
 					}
 					@if ($media-query-max) {
 						@media screen and (max-width: $media-query-max) {
 							%#{$selector-base}#{$selector-suffix} {
-								#{$property}: unquote($unit--media-query-max);
+								#{$property}: $unit--media-query-max;
 							}
 						}
 					}
@@ -111,7 +104,7 @@
 }
 
 // output specific properites only
-@mixin units($property: "padding", $version: "default", $variations: (base: true, top: true, right: true, bottom: true, left: true)) {
+@mixin units($property: "padding", $version: "default", $variation: (base: true, top: true, right: true, bottom: true, left: true)) {
 	$variation-controls: $variation;
 	$versions: map-get($units, $property);
 	$values: map-get($versions, $version);
@@ -124,7 +117,7 @@
 	$media-query-max: if(map-has-key($values, "media-query-max"),map-get($values, "media-query-max"),false);
 	$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
 	$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
-	
+
 	@each $variation, $boolean in $variation-controls {
 
 		$includeVariation: map-get($variation-controls, $variation);
@@ -150,6 +143,8 @@
 					}
 				}
 			}
+
+
 			@if ($media-query-max) {
 				@media screen and (max-width: $media-query-max) {
 					@if ( $baseDoesNotOveride ) {
@@ -174,4 +169,3 @@
 
 	}
 }
-

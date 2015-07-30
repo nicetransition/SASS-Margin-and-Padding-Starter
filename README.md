@@ -198,6 +198,7 @@ Each variation (including defaults) have a %placeholder selector that aligns wit
 + 2.1.0: Variables moved into "spacing.scss" and removal of "_variables.scss"
 + 2.2.0: Revert back to have variables in "spacing.scss" to "_variables.scss"
 + 3.0.0: Complete rewrite to include Sass 3.3 functionality and more flexibility for RWD projects
++ 3.0.1: Removal of `unquote()` for future proofing (`unquote` is being deprecated)
 
 ---
 

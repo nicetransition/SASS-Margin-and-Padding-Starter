@@ -3,11 +3,10 @@
  // * Demo: http://kevinmack18.github.io/SASS-Margin-and-Padding-Starter/
  // * Released under the MIT license
  // * https://github.com/kevinmack18/SASS-Margin-and-Padding-Starter/blob/master/LICENSE
- // * Version: v3.0.0
- // * Date: 2015-04-30
+ // * Version: v3.0.1
+ // * Date: 2015-07-30
 
 @import "unit_space__variables";
-
 
 @if ( $units__include-box-sizing ) {
 	*, *:before, *:after {
@@ -16,92 +15,92 @@
 }
 
 @mixin generateUnits($property: padding, $version: default, $variation: base ) {
+	$versions: map-get($units, $property);
+	$values: map-get($versions, $version);
+	$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-unit);
+	$selector-base: if(map-has-key($values, "selector-name"),map-get($values, "selector-name"),$property);
+	$variations: map-get($values, "variations");
+	$selector-suffix: if(map-has-key($values, "suffix"),map-get($values, "suffix"),"");
+	$media-query-min: if(map-has-key($values, "media-query-min"),map-get($values, "media-query-min"),false);
+	$unit--media-query-min: if(map-has-key($values, "unit--media-query-min"),map-get($values, "unit--media-query-min"),$unit);
+	$media-query-max: if(map-has-key($values, "media-query-max"),map-get($values, "media-query-max"),false);
+	$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
+	$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
 
-		$versions: map-get($units, $property);
-		$values: map-get($versions, $version);
-		$unit: if(map-has-key($values, "unit"),map-get($values, "unit"),$default-unit);
-		$selector-base: if(map-has-key($values, "selector-name"),map-get($values, "selector-name"),$property);
-		$variations: map-get($values, "variations");
-		$selector-suffix: if(map-has-key($values, "suffix"),map-get($values, "suffix"),"");
-		$media-query-min: if(map-has-key($values, "media-query-min"),map-get($values, "media-query-min"),false);
-		$unit--media-query-min: if(map-has-key($values, "unit--media-query-min"),map-get($values, "unit--media-query-min"),$unit);
-		$media-query-max: if(map-has-key($values, "media-query-max"),map-get($values, "media-query-max"),false);
-		$unit--media-query-max: if(map-has-key($values, "unit--media-query-max"),map-get($values, "unit--media-query-max"),$unit);
-		$units-are-controlled-by-breakpoints: ($media-query-min != false and $media-query-max != false);
 
+	@each $variation, $boolean in $variations {
 
-		@each $variation, $boolean in $variations {
+		@if( $variation != "base" ) {
 
-			@if( $variation != "base" ) {
+			// create custom placeholder selector for versioning each group in @extend
+			$id: if($version == "default", "", $version);
 
-				// create custom placeholder selector for versioning each group in @extend
-				$id: if($version == "default", "", $version);
+			// Check to see if both have breakpoints
+			@if ($units-are-controlled-by-breakpoints == false) {
+				%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
+					#{$property}-#{$variation}: $unit;
+				}
+			}
 
-				// Check to see if both have breakpoints
-				@if ($units-are-controlled-by-breakpoints == false) {
+			%#{$selector-base}#{$selector-suffix} {
+				@if (map-get($variations, "base") == true and (map-get($variations, "base") != "short") ) {
+					@extend %#{$selector-base}-#{$variation}#{$selector-suffix}#{$id};
+				}
+			}
+
+			@if ($media-query-min) {
+				@media screen and (min-width: $media-query-min) {
 					%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
-						#{$property}-#{$variation}: $unit;
+						#{$property}-#{$variation}: $unit--media-query-min;
 					}
 				}
-
-				%#{$selector-base}#{$selector-suffix} {
-					@if (map-get($variations, "base") == true and (map-get($variations, "base") != "short") ) {
-						@extend %#{$selector-base}-#{$variation}#{$selector-suffix}#{$id};
+			}
+			@if ($media-query-max) {
+				@media screen and (max-width: $media-query-max) {
+					%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
+						#{$property}-#{$variation}: $unit--media-query-max;
 					}
+				}
+			}
+		}
+
+		@if( $variation == "base" ) {
+			@if (map-get($variations, "base") == "short") {
+				%#{$selector-base}#{$selector-suffix} {
+					#{$property}: $unit;
 				}
 
 				@if ($media-query-min) {
 					@media screen and (min-width: $media-query-min) {
-						%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
-							#{$property}-#{$variation}: $unit--media-query-min;
+						%#{$selector-base}#{$selector-suffix} {
+							#{$property}: $unit--media-query-min;
 						}
 					}
 				}
 				@if ($media-query-max) {
 					@media screen and (max-width: $media-query-max) {
-						%#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} {
-							#{$property}-#{$variation}: $unit--media-query-max;
+						%#{$selector-base}#{$selector-suffix} {
+							#{$property}: $unit--media-query-max;
 						}
 					}
 				}
 			}
 
-			@if( $variation == "base" ) {
-				@if (map-get($variations, "base") == "short") {
-					%#{$selector-base}#{$selector-suffix} {
-						#{$property}: $unit;
-					}
-
-					@if ($media-query-min) {
-						@media screen and (min-width: $media-query-min) {
-							%#{$selector-base}#{$selector-suffix} {
-								#{$property}: $unit--media-query-min;
-							}
-						}
-					}
-					@if ($media-query-max) {
-						@media screen and (max-width: $media-query-max) {
-							%#{$selector-base}#{$selector-suffix} {
-								#{$property}: $unit--media-query-max;
-							}
-						}
-					}
-				}
-
-				.#{$selector-base}#{$selector-suffix} {
-					@extend %#{$selector-base}#{$selector-suffix} !optional;
-				}
-			}
-
-			@if( $variation != "base" and (map-get($variations, $variation) == true) ) {
-				$id: if($version == "default", "", $version);
-
-				.#{$selector-base}-#{$variation}#{$selector-suffix} {
-					@extend %#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} !optional;
-				}
+			.#{$selector-base}#{$selector-suffix} {
+				@extend %#{$selector-base}#{$selector-suffix} !optional;
 			}
 		}
+
+		@if( $variation != "base" and (map-get($variations, $variation) == true) ) {
+			$id: if($version == "default", "", $version);
+
+			.#{$selector-base}-#{$variation}#{$selector-suffix} {
+				@extend %#{$selector-base}-#{$variation}#{$selector-suffix}#{$id} !optional;
+			}
+		}
+	}
 }
+
 
 // output specific properites only
 @mixin units($property: "padding", $version: "default", $variation: (base: true, top: true, right: true, bottom: true, left: true)) {
@@ -128,29 +127,28 @@
 
 			@if ($units-are-controlled-by-breakpoints == false) {
 				@if ($baseDoesNotOveride) {
-					#{$property}-#{$variation}: unquote($unit);
+					#{$property}-#{$variation}: $unit;
 				} @else if ($isBase) {
-					#{$property}: unquote($unit);
+					#{$property}: $unit;
 				}
 			}
 
 			@if ($media-query-min) {
 				@media screen and (min-width: $media-query-min) {
 					@if ( $baseDoesNotOveride ) {
-						#{$property}-#{$variation}: unquote($unit--media-query-min);
+						#{$property}-#{$variation}: $unit--media-query-min;
 					} @else if ($isBase) {
-						#{$property}: unquote($unit--media-query-min);
+						#{$property}: $unit--media-query-min;
 					}
 				}
 			}
 
-
 			@if ($media-query-max) {
 				@media screen and (max-width: $media-query-max) {
 					@if ( $baseDoesNotOveride ) {
-						#{$property}-#{$variation}: unquote($unit--media-query-max);
+						#{$property}-#{$variation}: $unit--media-query-max;
 					} @else if ($isBase) {
-						#{$property}: unquote($unit--media-query-max);
+						#{$property}: $unit--media-query-max;
 					}
 				}
 			}
